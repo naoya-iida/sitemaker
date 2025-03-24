@@ -28,7 +28,7 @@ sightseeing1 = st.text_area("周辺エリアの見どころ1", "美しく積ま�
 sightseeing2 = st.text_area("周辺エリアの見どころ2", "7種のいちごや、赤・白・黒系のぶどう、食感の違いを楽しめる梨など果物の品種が豊富な農園です。")
 
 # 周辺の人気グルメ
-restaurant1 = st.text_area("周辺の人気グルメ1", "地元の旬の野菜を使ったランチや薬膳カレー、和洋の自家製デザート")
+restaurant1 = st.text_area("周辺の人気グルメ1", "cafe たねの隣り。地元の旬の野菜を使ったランチや薬膳カレー、和洋の自家製デザート")
 restaurant2 = st.text_area("周辺の人気グルメ2", "鰻の焼き加減は皮はパリッと身はフワフワと絶妙な焼き加減")
 restaurant3 = st.text_area("周辺の人気グルメ3", "馬肉は、自家牧場にておよそ2年の年月をかけて飼育されたもの")
 
@@ -52,7 +52,7 @@ if st.button("生成する"):
             - つづら棚田: {sightseeing1}
             - やまんどんの果物農園: {sightseeing2}
             周辺の人気グルメ:
-            - cafe たねの隣り: {restaurant1}
+            - : {restaurant1}
             - うなぎ料理 和食処 松月(しょうげつ): {restaurant2}
             - 馬庵このみ 吉井本店: {restaurant3}
             """}

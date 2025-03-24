@@ -20,12 +20,12 @@ keyword2 = st.text_area("キャッチコピーキーワード2", "地産地消�
 keyword3 = st.text_area("キャッチコピーキーワード3", "特別室で贅沢な時間。ご家族連れに是非おすすめしたいのが完成したばかりの特別室への宿泊。")
 
 # 館内での過ごし方
-facility_activities1 = st.text_area("館内での過ごし方1", "赤ちゃんとの旅行を手軽に楽しめるようパパ・ママにうれしいサービスや日用品を無料で提供")
-facility_activities2 = st.text_area("館内での過ごし方2", "ラウンジ前にはビールサーバー、ジュース、アイスクリームを無料で提供")
+facility_activities1 = st.text_area("館内での過ごし方1", "赤ちゃん連れでも安心。赤ちゃんとの旅行を手軽に楽しめるようパパ・ママにうれしいサービスや日用品を無料で提供")
+facility_activities2 = st.text_area("館内での過ごし方2", "ラウンジでくつろぎのひととき。ラウンジ前にはビールサーバー、ジュース、アイスクリームを無料で提供")
 
 # 周辺エリアの見どころ
-sightseeing1 = st.text_area("周辺エリアの見どころ1", "美しく積まれた石垣が印象的な棚田です。")
-sightseeing2 = st.text_area("周辺エリアの見どころ2", "7種のいちごや、赤・白・黒系のぶどう、食感の違いを楽しめる梨など果物の品種が豊富な農園です。")
+sightseeing1 = st.text_area("周辺エリアの見どころ1", "つづら棚田。美しく積まれた石垣が印象的な棚田です。")
+sightseeing2 = st.text_area("周辺エリアの見どころ2", "やまんどんの果物農園。7種のいちごや、赤・白・黒系のぶどう、食感の違いを楽しめる梨など果物の品種が豊富な農園です。")
 
 # 周辺の人気グルメ
 restaurant1 = st.text_area("周辺の人気グルメ1", "cafe たねの隣り。地元の旬の野菜を使ったランチや薬膳カレー、和洋の自家製デザート")
@@ -46,11 +46,11 @@ if st.button("生成する"):
             : {keyword2}
             : {keyword3}
             館内での過ごし方:
-            - 赤ちゃん連れでも安心: {facility_activities1}
-            - ラウンジでくつろぎのひととき: {facility_activities2}
+            - : {facility_activities1}
+            - : {facility_activities2}
             周辺エリアの見どころ:
-            - つづら棚田: {sightseeing1}
-            - やまんどんの果物農園: {sightseeing2}
+            - : {sightseeing1}
+            - : {sightseeing2}
             周辺の人気グルメ:
             - : {restaurant1}
             - : {restaurant2}

@@ -4,8 +4,8 @@ import openai
 # OpenAIのバージョン確認
 st.write(f"OpenAIのバージョン: {openai.__version__}")
 
-# Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
-openai.api_key = st.secrets.OPENAI_API_KEY.openai_api_key
+# OpenAI APIキーの設定（Secretsから読み取る）
+openai.api_key = st.secrets.OPENAI_API_KEY["openai_api_key"]
 
 # 施設情報の入力フォーム
 st.title("施設情報フォーム")
@@ -34,48 +34,36 @@ restaurant1 = st.text_area("周辺の人気グルメ1", "地元の旬の野菜�
 restaurant2 = st.text_area("周辺の人気グルメ2", "鰻の焼き加減は皮はパリッと身はフワフワと絶妙な焼き加減")
 restaurant3 = st.text_area("周辺の人気グルメ3", "馬肉は、自家牧場にておよそ2年の年月をかけて飼育されたもの")
 
-# 結果の生成を行うボタン
+# 結果の出力
 if st.button("生成する"):
-    # OpenAIのAPIに渡すプロンプトの作成
-    prompt = f"""
-    施設名: {facility_name}
-    OTAキャッチコピー: {ota_copy}
-
-    この施設の特徴:
-    貸切風呂: {keyword1}
-    地産地消の料理: {keyword2}
-    特別室の魅力: {keyword3}
-
-    館内のサービス:
-    館内での過ごし方1: {facility_activities1}
-    館内での過ごし方2: {facility_activities2}
-
-    周辺エリアの見どころ:
-    見どころ1: {sightseeing1}
-    見どころ2: {sightseeing2}
-
-    周辺の人気グルメ:
-    グルメ1: {restaurant1}
-    グルメ2: {restaurant2}
-    グルメ3: {restaurant3}
-
-    上記の情報をもとに、施設の魅力的な紹介文を作成してください。
-    """
-
     # OpenAI APIにリクエストを送信して紹介文を生成
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # モデル名を新しいものに変更
-        messages=[
-            {"role": "system", "content": "あなたは旅行に関する魅力的な紹介文を作成するアシスタントです。"},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=300,  # 最大トークン数（生成されるテキストの長さ）
-        temperature=0.7  # 創造的な生成を目指す
+    response = openai.Completion.create(
+        model="text-davinci-003",  # 新しいモデルを指定
+        prompt=f"""
+        あなたは旅行に関する魅力的な紹介文を生成するAIです。
+        以下の情報を元に紹介文を作成してください。
+
+        施設名: {facility_name}
+        OTAキャッチコピー: {ota_copy}
+        貸切風呂の魅力: {keyword1}
+        地産地消の料理: {keyword2}
+        特別室で贅沢な時間: {keyword3}
+        館内での過ごし方:
+        - 赤ちゃん連れでも安心: {facility_activities1}
+        - ラウンジでくつろぎのひととき: {facility_activities2}
+        周辺エリアの見どころ:
+        - つづら棚田: {sightseeing1}
+        - やまんどんの果物農園: {sightseeing2}
+        周辺の人気グルメ:
+        - cafe たねの隣り: {restaurant1}
+        - うなぎ料理 和食処 松月(しょうげつ): {restaurant2}
+        - 馬庵このみ 吉井本店: {restaurant3}
+        """,
+        max_tokens=300  # レスポンスのトークン制限
     )
 
-    # 生成された紹介文を取得
-    generated_text = response['choices'][0]['message']['content'].strip()
+    # 結果の生成
+    generated_text = response.choices[0].text.strip()
 
     # 結果を表示
-    st.subheader("生成された紹介文:")
-    st.write(generated_text)
+    st.text(generated_text)

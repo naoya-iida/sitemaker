@@ -15,9 +15,9 @@ ota_copy = st.text_input("OTAキャッチコピー", "みんなで過ごすか�
 facility_name = st.text_input("施設名", "筑後川温泉 ふくせんか")
 
 # キャッチコピーキーワード
-keyword1 = st.text_area("キャッチコピーキーワード1", "ふくせんかでは、4つの貸切風呂を完備しており、源泉かけ流しの温泉をプライベートに楽しむことができます。")
-keyword2 = st.text_area("キャッチコピーキーワード2", "地産地消の野菜や果物、新鮮な魚やお肉を使った会席料理。")
-keyword3 = st.text_area("キャッチコピーキーワード3", "ご家族連れに是非おすすめしたいのが完成したばかりの特別室への宿泊。")
+keyword1 = st.text_area("キャッチコピーキーワード1", "貸切風呂の魅力。ふくせんかでは、4つの貸切風呂を完備しており、源泉かけ流しの温泉をプライベートに楽しむことができます。")
+keyword2 = st.text_area("キャッチコピーキーワード2", "地産地消の料理。地産地消の野菜や果物、新鮮な魚やお肉を使った会席料理。")
+keyword3 = st.text_area("キャッチコピーキーワード3", "特別室で贅沢な時間。ご家族連れに是非おすすめしたいのが完成したばかりの特別室への宿泊。")
 
 # 館内での過ごし方
 facility_activities1 = st.text_area("館内での過ごし方1", "赤ちゃんとの旅行を手軽に楽しめるようパパ・ママにうれしいサービスや日用品を無料で提供")
@@ -29,8 +29,8 @@ sightseeing2 = st.text_area("周辺エリアの見どころ2", "7種のいちご
 
 # 周辺の人気グルメ
 restaurant1 = st.text_area("周辺の人気グルメ1", "cafe たねの隣り。地元の旬の野菜を使ったランチや薬膳カレー、和洋の自家製デザート")
-restaurant2 = st.text_area("周辺の人気グルメ2", "鰻の焼き加減は皮はパリッと身はフワフワと絶妙な焼き加減")
-restaurant3 = st.text_area("周辺の人気グルメ3", "馬肉は、自家牧場にておよそ2年の年月をかけて飼育されたもの")
+restaurant2 = st.text_area("周辺の人気グルメ2", "うなぎ料理 和食処 松月(しょうげつ)。鰻の焼き加減は皮はパリッと身はフワフワと絶妙な焼き加減")
+restaurant3 = st.text_area("周辺の人気グルメ3", "馬庵このみ 吉井本店。馬肉は、自家牧場にておよそ2年の年月をかけて飼育されたもの")
 
 # 結果の出力
 if st.button("生成する"):
@@ -42,9 +42,9 @@ if st.button("生成する"):
             {"role": "user", "content": f"""
             施設名: {facility_name}
             OTAキャッチコピー: {ota_copy}
-            貸切風呂の魅力: {keyword1}
-            地産地消の料理: {keyword2}
-            特別室で贅沢な時間: {keyword3}
+            : {keyword1}
+            : {keyword2}
+            : {keyword3}
             館内での過ごし方:
             - 赤ちゃん連れでも安心: {facility_activities1}
             - ラウンジでくつろぎのひととき: {facility_activities2}
@@ -53,8 +53,8 @@ if st.button("生成する"):
             - やまんどんの果物農園: {sightseeing2}
             周辺の人気グルメ:
             - : {restaurant1}
-            - うなぎ料理 和食処 松月(しょうげつ): {restaurant2}
-            - 馬庵このみ 吉井本店: {restaurant3}
+            - : {restaurant2}
+            - : {restaurant3}
             """}
         ]
     )

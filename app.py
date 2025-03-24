@@ -60,16 +60,18 @@ if st.button("生成する"):
     """
 
     # OpenAI APIにリクエストを送信して紹介文を生成
-    response = openai.Completion.create(
-        model="text-davinci-003",
-        prompt=prompt,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # モデル名を新しいものに変更
+        messages=[
+            {"role": "system", "content": "あなたは旅行に関する魅力的な紹介文を作成するアシスタントです。"},
+            {"role": "user", "content": prompt}
+        ],
         max_tokens=300,  # 最大トークン数（生成されるテキストの長さ）
-        n=1,  # 1つの結果を生成
         temperature=0.7  # 創造的な生成を目指す
     )
 
     # 生成された紹介文を取得
-    generated_text = response.choices[0].text.strip()
+    generated_text = response['choices'][0]['message']['content'].strip()
 
     # 結果を表示
     st.subheader("生成された紹介文:")

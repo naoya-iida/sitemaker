@@ -1,9 +1,6 @@
 import streamlit as st
 import openai
 
-# OpenAIのバージョン確認
-st.write(f"OpenAIのバージョン: {openai.__version__}")
-
 # OpenAI APIキーの設定（Secretsから読み取る）
 openai.api_key = st.secrets.OPENAI_API_KEY["openai_api_key"]
 
@@ -37,33 +34,34 @@ restaurant3 = st.text_area("周辺の人気グルメ3", "馬肉は、自家牧�
 # 結果の出力
 if st.button("生成する"):
     # OpenAI APIにリクエストを送信して紹介文を生成
-    response = openai.Completion.create(
-        model="text-davinci-003",  # 新しいモデルを指定
-        prompt=f"""
-        あなたは旅行に関する魅力的な紹介文を生成するAIです。
-        以下の情報を元に紹介文を作成してください。
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",  # 新しいモデルを指定
+        messages=[
+            {"role": "system", "content": "あなたは旅行に関する魅力的な紹介文を生成するAIです。"},
+            {"role": "user", "content": f"""
+            以下の情報を元に紹介文を作成してください。
 
-        施設名: {facility_name}
-        OTAキャッチコピー: {ota_copy}
-        貸切風呂の魅力: {keyword1}
-        地産地消の料理: {keyword2}
-        特別室で贅沢な時間: {keyword3}
-        館内での過ごし方:
-        - 赤ちゃん連れでも安心: {facility_activities1}
-        - ラウンジでくつろぎのひととき: {facility_activities2}
-        周辺エリアの見どころ:
-        - つづら棚田: {sightseeing1}
-        - やまんどんの果物農園: {sightseeing2}
-        周辺の人気グルメ:
-        - cafe たねの隣り: {restaurant1}
-        - うなぎ料理 和食処 松月(しょうげつ): {restaurant2}
-        - 馬庵このみ 吉井本店: {restaurant3}
-        """,
-        max_tokens=300  # レスポンスのトークン制限
+            施設名: {facility_name}
+            OTAキャッチコピー: {ota_copy}
+            貸切風呂の魅力: {keyword1}
+            地産地消の料理: {keyword2}
+            特別室で贅沢な時間: {keyword3}
+            館内での過ごし方:
+            - 赤ちゃん連れでも安心: {facility_activities1}
+            - ラウンジでくつろぎのひととき: {facility_activities2}
+            周辺エリアの見どころ:
+            - つづら棚田: {sightseeing1}
+            - やまんどんの果物農園: {sightseeing2}
+            周辺の人気グルメ:
+            - cafe たねの隣り: {restaurant1}
+            - うなぎ料理 和食処 松月(しょうげつ): {restaurant2}
+            - 馬庵このみ 吉井本店: {restaurant3}
+            """}
+        ]
     )
 
     # 結果の生成
-    generated_text = response.choices[0].text.strip()
+    generated_text = response['choices'][0]['message']['content'].strip()
 
     # 結果を表示
     st.text(generated_text)

@@ -1,6 +1,9 @@
 import streamlit as st
 import openai
 
+# OpenAIのバージョン確認
+st.write(f"OpenAIのバージョン: {openai.__version__}")
+
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 openai.api_key = st.secrets.OPENAI_API_KEY.openai_api_key
 

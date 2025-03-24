@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 
 # OpenAI APIキーの設定（Secretsから読み取る）
-openai.api_key = st.secrets["OPENAI_API_KEY"]["openai_api_key"]
+openai_api_key = st.secrets["OPENAI_API_KEY"]["openai_api_key"]
 
 # 施設情報の入力フォーム
 st.title("施設情報フォーム")

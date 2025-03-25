@@ -6,7 +6,7 @@ openai_api_key = st.secrets["OPENAI_API_KEY"]["openai_api_key"]
 openai.api_key = openai_api_key
 
 # 施設情報の入力フォーム
-st.title("施設情報フォーム")
+st.title("施設情報フォーム｜ミニサイト用")
 
 # OTAキャッチコピー
 ota_copy = st.text_input("OTAキャッチコピー", "みんなで過ごすから、たのしい。ペット・家族の温泉旅行 応援宿。")

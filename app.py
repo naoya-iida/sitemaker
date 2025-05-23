@@ -24,13 +24,24 @@ facility_activities1 = st.text_area("館内での過ごし方1", "ex.赤ちゃ�
 facility_activities2 = st.text_area("館内での過ごし方2", "ex.ラウンジでくつろぎのひととき。ラウンジ前にはビールサーバー、ジュース、アイスクリームを無料で提供")
 
 # 周辺エリアの見どころ
-sightseeing1 = st.text_area("周辺エリアの見どころ1", "ex.つづら棚田。美しく積まれた石垣が印象的な棚田です。")
-sightseeing2 = st.text_area("周辺エリアの見どころ2", "ex.やまんどんの果物農園。7種のいちごや、赤・白・黒系のぶどう、食感の違いを楽しめる梨など果物の品種が豊富な農園です。")
+sightseeing_name1 = st.text_input("周辺エリアの見どころ1：名称", "ex.つづら棚田")
+sightseeing_desc1 = st.text_area("周辺エリアの見どころ1：説明", "ex.美しく積まれた石垣が印象的な棚田です。")
+
+sightseeing_name2 = st.text_input("周辺エリアの見どころ2：名称", "ex.やまんどんの果物農園")
+sightseeing_desc2 = st.text_area("周辺エリアの見どころ2：説明", "ex.いちごやぶどうなど果物の品種が豊富な農園です。")
+
+sightseeing_name3 = st.text_input("周辺エリアの見どころ3：名称", "")
+sightseeing_desc3 = st.text_area("周辺エリアの見どころ3：説明", "")
 
 # 周辺の人気グルメ
-restaurant1 = st.text_area("周辺の人気グルメ1", "ex.cafe たねの隣り。地元の旬の野菜を使ったランチや薬膳カレー、和洋の自家製デザート")
-restaurant2 = st.text_area("周辺の人気グルメ2", "ex.うなぎ料理 和食処 松月(しょうげつ)。鰻の焼き加減は皮はパリッと身はフワフワと絶妙な焼き加減")
-restaurant3 = st.text_area("周辺の人気グルメ3", "ex.馬庵このみ 吉井本店。馬肉は、自家牧場にておよそ2年の年月をかけて飼育されたもの")
+restaurant_name1 = st.text_input("周辺の人気グルメ1：名称", "ex.cafe たねの隣り")
+restaurant_desc1 = st.text_area("周辺の人気グルメ1：説明", "ex.地元野菜のランチや薬膳カレー、自家製デザート")
+
+restaurant_name2 = st.text_input("周辺の人気グルメ2：名称", "ex.うなぎ料理 和食処 松月")
+restaurant_desc2 = st.text_area("周辺の人気グルメ2：説明", "ex.パリッと焼かれた皮とふわふわの鰻が絶品")
+
+restaurant_name3 = st.text_input("周辺の人気グルメ3：名称", "ex.馬庵このみ 吉井本店")
+restaurant_desc3 = st.text_area("周辺の人気グルメ3：説明", "ex.自家牧場育ちの馬肉が堪能できる専門店")
 
 # 結果の出力
 if st.button("生成する"):
